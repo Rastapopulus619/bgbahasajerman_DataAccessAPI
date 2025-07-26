@@ -1,0 +1,6 @@
+@bgbahasajerman_DataAccessAPI_HostAddress = http://localhost:5053
+
+GET {{bgbahasajerman_DataAccessAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

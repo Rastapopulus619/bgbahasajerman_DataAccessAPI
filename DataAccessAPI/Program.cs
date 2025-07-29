@@ -1,38 +1,42 @@
 using bgbahasajerman_DataAccessLibrary.DataAccess;
 
-WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
-
+var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-// Register the mock repository for DI
 builder.Services.AddScoped<IMockRepository, MockRepository>();
-// Register data access services (uses MySqlConnectionFactory and QueryExecutor)
 builder.Services.AddDataAccessServices(builder.Configuration);
 
-
-
 builder.Services.AddControllers();
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
+
+// Swagger & OpenAPI
 builder.Services.AddOpenApi();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-
-
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+// IMPORTANT: UseStaticFiles must come before UseSwagger
+app.UseStaticFiles();
+
+// Set up Swagger for both Development and Production
+app.UseSwagger();
+app.UseSwaggerUI(options =>
+{
+    options.SwaggerEndpoint("/swagger/v1/swagger.json", "bgbahasajerman API v1");
+    options.RoutePrefix = "swagger";
+    // Add this to ensure static files are served correctly
+    options.InjectStylesheet("/swagger-ui/custom.css");
+});
+
+// Optional HTTPS redirection — only if it's available
 if (app.Environment.IsDevelopment())
 {
-    app.MapOpenApi();
-    app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseHttpsRedirection();
 }
 
-app.UseHttpsRedirection();
-
 app.UseAuthorization();
-
 app.MapControllers();
+
+app.MapGet("/", () => "API is running. Swagger lives at /swagger/index.html");
 
 app.Run();

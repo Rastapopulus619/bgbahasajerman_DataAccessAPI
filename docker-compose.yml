@@ -1,0 +1,10 @@
+services:
+  dataaccess-api:
+    image: bgbj-dataaccess-api:latest
+    container_name: bgbj-dataaccess-api
+    ports:
+      - "8090:80"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_URLS=http://+:80
+    restart: always

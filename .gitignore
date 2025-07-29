@@ -416,3 +416,19 @@ FodyWeavers.xsd
 *.msix
 *.msm
 *.msp
+
+# Production only appsettings that should not be copied to Development version of the repo
+**/appsettings.Production.json
+
+# 🔒 Sensitive config files (keep out of GitHub)
+appsettings.json
+**/appsettings.json
+
+# 🧹 Backup files & unwanted IDE leftovers
+*.bak
+*.Backup.*
+*backup*
+DataAccessAPI/Properties/launchSettings.json.bak
+
+# 💻 Local launch settings should NOT go to GitHub if machine-specific
+*.launch.json

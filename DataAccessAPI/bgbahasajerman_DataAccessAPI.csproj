@@ -12,7 +12,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="C:\Programmieren\bgbahasajerman_DataAccessAPI\DataAccessLibraries\bgbahasajerman_DataAccessLibrary.csproj" />
+    <ProjectReference Include="..\DataAccessLibraries\bgbahasajerman_DataAccessLibrary.csproj" />
+  </ItemGroup>
+
+  <!-- Ensures wwwroot and all static files (e.g., Swagger UI) are published -->
+  <ItemGroup>
+    <Content Update="wwwroot\**">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>

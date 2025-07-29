@@ -1,4 +1,5 @@
 using bgbahasajerman_DataAccessLibrary.DataAccess;
+using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,7 +12,14 @@ builder.Services.AddControllers();
 // Swagger & OpenAPI
 builder.Services.AddOpenApi();
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1", new OpenApiInfo
+    {
+        Title = "Data Access API (Test - Luna Edition)",
+        Version = "v1"
+    });
+});
 
 var app = builder.Build();
 

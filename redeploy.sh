@@ -8,7 +8,8 @@ echo ">>> Pulling latest changes from origin/$current_branch..."
 git pull origin "$current_branch"
 
 echo ">>> Rebuilding Docker container (no cache)..."
-docker-compose build --no-cache
+docker-compose build 
+# --no-cache
 
 echo ">>> Restarting container..."
 docker-compose down

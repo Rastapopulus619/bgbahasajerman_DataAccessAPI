@@ -1,5 +1,8 @@
 services:
   dataaccess-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
     image: bgbj-dataaccess-api:latest
     container_name: bgbj-dataaccess-api
     ports:

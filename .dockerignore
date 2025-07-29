@@ -1,0 +1,19 @@
+# Build artifacts
+bin/
+obj/
+
+# Git & VSCode junk
+.git/
+.gitignore
+.vscode/
+
+# OS/system files
+*.user
+*.suo
+*.swp
+*.tmp
+*.log
+
+# Docker build cache triggers
+Dockerfile
+README.md

@@ -6,7 +6,7 @@ WORKDIR /app
 COPY *.sln .
 COPY DataAccessAPI/*.csproj ./DataAccessAPI/
 COPY DataAccessLibraries/*.csproj ./DataAccessLibraries/
-COPY BusinessLogicProject/*.csproj ./bgbahasajerman_BusinessLogic/
+COPY bgbahasajerman_BusinessLogic/*.csproj ./bgbahasajerman_BusinessLogic/
 
 # Restore dependencies
 RUN dotnet restore

@@ -1,9 +1,11 @@
 using bgbahasajerman_DataAccessLibrary.DataAccess;
 using Microsoft.OpenApi.Models;
+using bgbahasajerman_BusinessLogic;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddBusinessLogic(builder.Configuration);
 builder.Services.AddScoped<IMockRepository, MockRepository>();
 builder.Services.AddDataAccessServices(builder.Configuration);
 

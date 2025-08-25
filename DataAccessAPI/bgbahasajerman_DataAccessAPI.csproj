@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DataAccessLibraries\bgbahasajerman_DataAccessLibrary.csproj" />
+    <ProjectReference Include="..\bgbahasajerman_BusinessLogic\bgbahasajerman_BusinessLogic.csproj" />
   </ItemGroup>
 
   <!-- Ensures wwwroot and all static files (e.g., Swagger UI) are published -->

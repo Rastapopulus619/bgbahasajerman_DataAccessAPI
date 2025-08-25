@@ -6,7 +6,7 @@ namespace bgbahasajerman_BusinessLogic.Interfaces
 {
     public interface IStudentService
     {
-        Task<IEnumerable<IListStudentModel>> GetAllStudentsAsync();
+        Task<IReadOnlyList<IListStudentModel>> GetAllStudentsAsync();
         Task<IListStudentModel?> GetStudentByNumberAsync(int studentNumber);
     }
 }

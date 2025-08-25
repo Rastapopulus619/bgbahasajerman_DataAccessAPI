@@ -5,12 +5,14 @@ using System.Threading.Tasks;
 using bgbahasajerman_BusinessLogic.Interfaces;
 using bgbahasajerman_DataAccessLibrary.Repositories.Students;
 using bgbahasajerman_DataAccessLibrary.Models;
+using Microsoft.Extensions.Logging;
 
 namespace bgbahasajerman_BusinessLogic.Services
 {
     public class StudentService : IStudentService
     {
         private readonly IStudentRepository _repo;
+        private readonly ILogger<StudentService> _logger;
         private static readonly string[] AllowedTitles = new[] { "Herr", "Frau" };
 
         public StudentService(IStudentRepository repo)
@@ -18,10 +20,24 @@ namespace bgbahasajerman_BusinessLogic.Services
             _repo = repo;
         }
 
-        public async Task<IEnumerable<IListStudentModel>> GetAllStudentsAsync()
+        public async Task<IReadOnlyList<IListStudentModel>> GetAllStudentsAsync()
         {
             var students = await _repo.GetAllStudentsAsync();
-            return students.Select(ValidateAndMapToListModel);
+            var list = new List<IListStudentModel>();
+
+            foreach (var s in students)
+            {
+                try
+                {
+                    list.Add(ValidateAndMapToListModel(s));
+                }
+                catch (Exception ex)
+                {
+                    _logger.LogWarning(ex, "Skipping invalid student {StudentID}", s.StudentID);
+                }
+            }
+
+            return list;
         }
 
         public async Task<IListStudentModel?> GetStudentByNumberAsync(int studentNumber)
@@ -34,16 +50,19 @@ namespace bgbahasajerman_BusinessLogic.Services
 
         private IListStudentModel ValidateAndMapToListModel(StudentModel m)
         {
-            if (string.IsNullOrWhiteSpace(m.Name)) throw new InvalidOperationException($"Student {m.StudentNumber} has empty Name");
-            if (m.StudentNumber <= 0) throw new InvalidOperationException("Invalid StudentNumber");
-            // if (m.Title != null && !AllowedTitles.Contains(m.Title)) throw new InvalidOperationException($"Invalid Title: {m.Title}");
+            if (string.IsNullOrWhiteSpace(m.Name))
+                throw new InvalidOperationException($"Student {m.StudentNumber} has empty Name");
 
+            if (m.StudentNumber <= 0)
+                throw new InvalidOperationException("Invalid StudentNumber");
+
+            // Title can be either null or any string — both are acceptable.
             return new ListStudentModel
             {
                 StudentID = m.StudentID,
                 StudentNumber = m.StudentNumber,
                 Name = m.Name,
-                Title = m.Title
+                Title = m.Title   // passes through unchanged, may be null or set
             };
         }
     }

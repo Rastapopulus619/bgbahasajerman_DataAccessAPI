@@ -36,7 +36,7 @@ namespace bgbahasajerman_BusinessLogic.Services
         {
             if (string.IsNullOrWhiteSpace(m.Name)) throw new InvalidOperationException($"Student {m.StudentNumber} has empty Name");
             if (m.StudentNumber <= 0) throw new InvalidOperationException("Invalid StudentNumber");
-            if (m.Title != null && !AllowedTitles.Contains(m.Title)) throw new InvalidOperationException($"Invalid Title: {m.Title}");
+            // if (m.Title != null && !AllowedTitles.Contains(m.Title)) throw new InvalidOperationException($"Invalid Title: {m.Title}");
 
             return new ListStudentModel
             {

@@ -11,6 +11,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataAccessLibraries", "Data
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bgbahasajerman_DataAccessLibrary", "DataAccessLibraries\bgbahasajerman_DataAccessLibrary.csproj", "{A5CBE93E-25FA-4D56-B70F-70279C43DC51}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bgbahasajerman_BusinessLogic", "bgbahasajerman_BusinessLogic\bgbahasajerman_BusinessLogic.csproj", "{D3A4501B-F39A-4B80-82A6-E0C77E35D0FF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,18 @@ Global
 		{A5CBE93E-25FA-4D56-B70F-70279C43DC51}.Release|x64.Build.0 = Release|Any CPU
 		{A5CBE93E-25FA-4D56-B70F-70279C43DC51}.Release|x86.ActiveCfg = Release|Any CPU
 		{A5CBE93E-25FA-4D56-B70F-70279C43DC51}.Release|x86.Build.0 = Release|Any CPU
+		{D3A4501B-F39A-4B80-82A6-E0C77E35D0FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3A4501B-F39A-4B80-82A6-E0C77E35D0FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3A4501B-F39A-4B80-82A6-E0C77E35D0FF}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{D3A4501B-F39A-4B80-82A6-E0C77E35D0FF}.Debug|x64.Build.0 = Debug|Any CPU
+		{D3A4501B-F39A-4B80-82A6-E0C77E35D0FF}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{D3A4501B-F39A-4B80-82A6-E0C77E35D0FF}.Debug|x86.Build.0 = Debug|Any CPU
+		{D3A4501B-F39A-4B80-82A6-E0C77E35D0FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3A4501B-F39A-4B80-82A6-E0C77E35D0FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D3A4501B-F39A-4B80-82A6-E0C77E35D0FF}.Release|x64.ActiveCfg = Release|Any CPU
+		{D3A4501B-F39A-4B80-82A6-E0C77E35D0FF}.Release|x64.Build.0 = Release|Any CPU
+		{D3A4501B-F39A-4B80-82A6-E0C77E35D0FF}.Release|x86.ActiveCfg = Release|Any CPU
+		{D3A4501B-F39A-4B80-82A6-E0C77E35D0FF}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

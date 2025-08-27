@@ -5,7 +5,7 @@ namespace bgbahasajerman_DataAccessLibrary.DataAccess
         public Task<string> GetGreetingAsync()
         {
             // Hard-coded value, simulating a query result
-            return Task.FromResult("Hello from the **not so fucked up** mock repository!");
+            return Task.FromResult("Hello from the mock repository! No need to curse anymore..");
         }
     }
 }

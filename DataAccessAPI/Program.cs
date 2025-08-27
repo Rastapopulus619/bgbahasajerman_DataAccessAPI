@@ -4,6 +4,22 @@ using bgbahasajerman_BusinessLogic;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// ======================================
+// Dev CORS for Blazor localhost
+// ======================================
+const string DevCors = "DevCors";
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(DevCors, policy =>
+        policy.WithOrigins(
+            "https://localhost:7291", // Blazor HTTPS
+            "http://localhost:5044"   // Blazor HTTP
+        )
+        .AllowAnyHeader()
+        .AllowAnyMethod());
+});
+// ======================================
+
 // Add services to the container.
 builder.Services.AddBusinessLogic(builder.Configuration);
 builder.Services.AddScoped<IMockRepository, MockRepository>();
@@ -42,6 +58,9 @@ app.UseSwaggerUI(options =>
 if (app.Environment.IsDevelopment())
 {
     app.UseHttpsRedirection();
+
+    // Enable CORS only in Development
+    app.UseCors(DevCors);
 }
 
 app.UseAuthorization();
